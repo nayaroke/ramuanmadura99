@@ -4,61 +4,15 @@ $(function(){$('a[href="#searchfs"]').on("click",function(e){e.preventDefault(),
 
 for(var imgEl=document.querySelectorAll(".post-body img"),i=0;i<imgEl.length;i++)imgEl[i].getAttribute("src")&&(imgEl[i].setAttribute("data-src",imgEl[i].getAttribute("src")),imgEl[i].removeAttribute("src"),imgEl[i].className+=" lazyload");
 
-function addClassBody() {
-    var element, name, arr;
-    element = document.body;
-    name = "flow";
-    arr = element.className.split(" ");
-    if (arr.indexOf(name) == -1) {
-        element.className += " " + name;
-    }
-}
-function removeClassBody() {
-    var element = document.body;
-    element.className = element.className.replace(/\bflow\b/g, "");
-}
-
-var lazyaddthis = false;
-window.addEventListener("scroll", function(){
-if ((document.documentElement.scrollTop != 0 && lazyaddthis === false) || (document.body.scrollTop != 0 && lazyaddthis === false)) {
-	
-        // SIMPAN KODE JAVASCRIPT DISQUS DI BAWAH INI
-    (function() {  // DON'T EDIT BELOW THIS LINE
-        var d = document, s = d.createElement('script');      
-        s.src = '//'+shortname+'.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
-
-lazyaddthis = true;
-  }
-}, true);
-
 function jump(h){
     var top = document.getElementById(h).offsetTop;
     window.scrollTo(0, top);
 }
 
-window.onscroll = function() {scrollFunction()};
-function scrollFunction() {
-  if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-    document.getElementById("backToTop").style.display = "block";
-  } else {
-    document.getElementById("backToTop").style.display = "none";
-  }
-}
 function topFunction() {
   document.body.scrollTop = 0; // For Safari
   document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 }
-
-function init() {
-var imgDefer = document.getElementsByTagName('img');
-for (var i=0; i<imgDefer.length; i++) {
-if(imgDefer[i].getAttribute('data-src')) {
-imgDefer[i].setAttribute('src',imgDefer[i].getAttribute('data-src'));
-} } }
-window.onload = init;
 
 var x=document.querySelectorAll(".lazyloadimg"),i;for(i=0;i<x.length;i++)x[i].innerHTML=x[i].innerHTML.replace("<!--","").replace("-->","");
 setTimeout(function(){
